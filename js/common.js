@@ -58,39 +58,25 @@ $(function() {
 
 	//E-mail Ajax Send
 	//Documentation & Example: https://github.com/agragregra/uniMail
-	$('#form').submit(function() { // проверка на пустоту заполненных полей. Атрибут html5 — required не подходит (не поддерживается Safari)
-		if (document.form.name.value == '' || document.form.phone.value == '' ) {
-			valid = false;
-			return valid;
-		}
+	$("form").submit(function() { //Change
+		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "mail.php",
-			data: $(this).serialize()
+			url: "mail.php", //Change
+			data: th.serialize()
 		}).done(function() {
-			$('.js-overlay-thank-you').fadeIn();
-			$(this).find('input').val('');
-			$('#form').trigger('reset');
+			$(".form-callback .success").addClass("active");
+			setTimeout(function() {
+				// Done Functions
+				$(".form-callback .success").removeClass("active");
+				th.trigger("reset");
+				$.magnificPopup.close();
+			}, 2000);
 		});
 		return false;
 	});
 
-		// Закрыть попап «спасибо»
-	$('.js-close-thank-you').click(function() { // по клику на крестик
-		$('.js-overlay-thank-you').fadeOut();
-	});
 
-	$(document).mouseup(function (e) { // по клику вне попапа
-		var popup = $('.popup');
-		if (e.target!=popup[0]&&popup.has(e.target).length === 0){
-			$('.js-overlay-thank-you').fadeOut();
-		}
-	});
-
-	// Маска ввода номера телефона (плагин maskedinput)
-	$(function($){
-		$('[name="phone"]').mask("+7(999) 999-9999");
-	});
 
 	$("a[href='#raz']").magnificPopup({
 		mainClass: 'my-mfp-zoom-in',
