@@ -58,7 +58,7 @@ $(function() {
 
 	//E-mail Ajax Send
 	//Documentation & Example: https://github.com/agragregra/uniMail
-	$("pole").submit(function() { //Change
+	$(".pole").submit(function() { //Change
 		var th = $(this);
 		$.ajax({
 			type: "POST",
