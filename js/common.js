@@ -62,7 +62,7 @@ $(function() {
 		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "assets/app/mail.php", //Change
+			url: "mail.php", //Change
 			data: th.serialize()
 		}).done(function() {
 			alert("Спасибо большое!")
