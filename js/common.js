@@ -58,20 +58,21 @@ $(function() {
 
 	//E-mail Ajax Send
 	//Documentation & Example: https://github.com/agragregra/uniMail
-	$("war, war1").submit(function() { //Change
+	$(".pole").submit(function() { //Change
 		var th = $(this);
 		$.ajax({
 			type: "POST",
-			url: "mail.php", //Change
+			url: "assets/app/mail.php", //Change
 			data: th.serialize()
 		}).done(function() {
-			$(".form-callback .success").addClass("active");
+			alert("Спасибо большое!")
 			setTimeout(function() {
 				// Done Functions
+				th.trigger("reset");
 				$(".form-callback .success").removeClass("active");
 				th.trigger("reset");
 				$.magnificPopup.close();
-			}, 2000);
+			}, 1000);
 		});
 		return false;
 	});
