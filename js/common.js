@@ -11,8 +11,16 @@ $(function() {
 				items:1,
 				
 			},
+			586:{
+				items:1,
+				
+			},
 			600:{
-				items:4,
+				items:3,
+				
+			},
+			727:{
+				items:3,
 				
 			},
 			1000:{
